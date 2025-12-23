@@ -1,5 +1,8 @@
 /*
+!.gitignore
 !/proiect/
 /proiect/*
 !/proiect/proiect.ino
-!.gitignore
+!/ScanUID/
+/ScanUID/*
+!/ScanUID/ScanUID.ino
