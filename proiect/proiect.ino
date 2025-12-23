@@ -15,7 +15,7 @@ Servo servo;
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 MFRC522 rfid(SS_PIN, RST_PIN);
 
-String UID = "66 37 57 B8";  // UID-ul corect al tag-ului pentru acces
+const String UID = "66 37 57 B8";  // UID-ul corect al tag-ului pentru acces
 
 // pozitiile servomotorului (incuietoare inchisa/deschisa)
 const int lockedAngle = 70;
