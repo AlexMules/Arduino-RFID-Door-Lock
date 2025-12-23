@@ -21,7 +21,7 @@ MFRC522 rfid(SS_PIN, RST_PIN);
 
 // Pozitiile servomotorului
 int pozitie_inchis = 70;
-int pozitie_deschis = 160;
+int pozitie_deschis = 120;
 
 void setup() {
   Serial.begin(9600);
