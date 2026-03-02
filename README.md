@@ -50,3 +50,20 @@ The system uses the following libraries to ensure seamless hardware integration:
 * **`LiquidCrystal_I2C.h`**: For controlling the display via the I2C interface.
 * **`Servo.h`**: For precise control of the locking mechanism.
 * **`SPI.h`**: For reliable communication between the Arduino board and the RFID module.<br><br>
+
+## 📘 Usage Guide
+This section outlines how to operate the system and interpret its feedback signals:
+* **`Startup & Standby`**: Connect the system to a 5V power source via USB. Upon startup, the latch automatically locks (70°), and the LCD displays a welcome message. In standby, the LEDs remain off, and the buzzer is inactive.
+* **`Scanning Procedure`**: Hold your RFID card or tag 1–3 cm away from the MFRC522 antenna. The LCD will display "Scanning..." along with progress indicators while the UID is processed.
+* **`Access Granted`**: If an authorized card is detected, the green LED lights up, the buzzer emits a short confirmation beep, and the servo rotates to 120°, opening the lock for 10 seconds before automatically re-locking.
+* **`Access Denied`**: If an unknown card is used, the red LED lights up, and the buzzer emits a rapid 3-beep alarm. The lock remains closed (70°), and the system resets after 2 seconds.
+* **`Troubleshooting`**: If the system fails to react, ensure the card is held parallel to the reader. You can use the **Serial Monitor** to debug and view the hexadecimal codes of scanned tags in real-time.<br><br>
+
+## 🚀 Potential Improvements
+While this system functions as a reliable prototype, there are several ways to improve the project for real-world applications and increased security:
+* **`Improving Authorization`** - Currently, the system uses a single hardcoded UID for access. Using the board's internal EEPROM would allow the user to add or remove multiple authorized tags without modifying the source code.
+* **`IoT Connectivity`**: Integrate a Wi-Fi (e.g., ESP8266 or ESP32) or Bluetooth module to receive real-time notifications on a smartphone whenever the door is opened or if an unauthorized access attempt is detected.
+* **`PCB Prototyping`**: While the breadboard is good for development, designing a custom printed circuit board (PCB) would make the system more compact, durable, and suitable for permanent installation on an actual door.
+* **`Independent Power Supply`**: Currently, the system requires a USB connection for 5V power. Integrating a lithium battery with a charging module would allow the lock to function independently of a computer or wall outlet.
+* **`Enhanced Security`**: The current system relies solely on RFID. Adding multi-factor authentication, such as a physical keypad for a PIN or a fingerprint sensor would significantly increase the security level.
+* **`Access Logging`**: Adding an SD card module would allow the system to maintain a local log file, recording the timestamp and UID of every successful or failed access attempt for security auditing.
