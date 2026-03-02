@@ -23,4 +23,13 @@ The following components were used to build the system:
 * **`USB Type-A to Type-B Cable`**: Provides dual functionality: powering the circuit with a constant 5V voltage from a computer and transferring the source code from the development environment (Arduino IDE) to the microcontroller's Flash memory.
 * **`Plexiglass Support (4mm thickness)`**: Used for rigid mounting of all components, ensuring structural stability of the system.<br><br>
 
+## 🔧 Software Implementation
+The software implementation consists of two distinct programs designed to manage the identification and access logic of the system:
+* `**ScanUID.ino**` - This program is designed to extract the UID from the RFID tag. It initializes the SPI protocol, the RFID reader, and the LCD display to output the tag's hexadecimal code, allowing the user to identify and record the authorization key.
+* **`proiect.ino`** (Access Control Logic): This is the core program that coordinates hardware components to regulate access. It uses a predefined constant for the authorization UID and specific servo angles to control the mechanical locking mechanism (70° for locked, 120° for unlocked). The program continuously monitors for a new card , validates the scanned tag against the stored ID, and triggers specific feedback: granting access (green LED, confirmation beep, and unlocking) or denying entry (red LED, alarm sequence, and keeping the door locked).<br>
 
+The system uses the following libraries to ensure seamless hardware integration:
+* **`MFRC522.h`**: For RFID module control and data decoding.
+* **`LiquidCrystal_I2C.h`**: For controlling the display via the I2C interface.
+* **`Servo.h`**: For precise control of the locking mechanism.
+* **`SPI.h`**: For reliable communication between the Arduino board and the RFID module.
